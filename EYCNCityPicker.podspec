@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "EYCNCityPicker"
-  s.version      = "v0.0.1"
+  s.version      = "0.0.1"
   s.summary      = "iOS中国行政区域picker控件，数据来源于高德web API"
   s.homepage     = "https://github.com/enix223/EYCNCityPicker"
   s.license      = "MIT"
