@@ -69,7 +69,7 @@ typedef void (^LHCityPickerConfirmBlock)(EYCNCityPicker *picker,
  */
 - (void)showInView:(UIView *)view
           withData:(NSArray *)data
-  initialSelctions:(NSArray<NSString *> *)selections
+  initialSelctions:(NSArray<NSNumber *> *)selections
         cancelBlock:(__nullable LHCityPickerCancelBlock)cancelBlock
       confirmBlock:(__nullable LHCityPickerConfirmBlock)confirmBlock;
 
@@ -84,8 +84,8 @@ typedef void (^LHCityPickerConfirmBlock)(EYCNCityPicker *picker,
  */
 - (void)showInView:(UIView *)view
           withData:(NSArray *)data
-  initialSelctions:(NSArray<NSString *> *)selections
-    itemAttributes:(NSDictionary *)attributes
+  initialSelctions:(NSArray<NSNumber *> *)selections
+    itemAttributes:(NSDictionary * _Nullable)attributes
             cancel:(__nullable LHCityPickerCancelBlock)cancelBlock
       confirmBlock:(__nullable LHCityPickerConfirmBlock)confirmBlock;
 

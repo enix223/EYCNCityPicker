@@ -25,7 +25,7 @@ typedef void (^EYCNCityServiceCompletion)(NSArray * _Nullable cities, NSError * 
  * @param key: 高德web API Key，详情请查看：http://developer.amap.com/api/webservice/summary/
  * @return: Service 实例
  */
-- (instancetype)initWithAPIKey:(NSString *)key NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithAPIKey:(NSString *)key;
 
 /**
  * @brief 请求中国行政区域数据

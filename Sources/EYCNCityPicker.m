@@ -123,9 +123,9 @@
 
 - (void)showInView:(UIView *)view
           withData:(NSArray *)data
-  initialSelctions:(NSArray<NSString *> *)selections
-            cancel:(__nullable LHCityPickerCancelBlock)cancelBlock
-      confirmBlock:(__nullable LHCityPickerConfirmBlock)confirmBlock {
+  initialSelctions:(NSArray<NSNumber *> *)selections
+       cancelBlock:(LHCityPickerCancelBlock)cancelBlock
+      confirmBlock:(LHCityPickerConfirmBlock)confirmBlock {
     [self showInView:view
             withData:data
     initialSelctions:selections
@@ -136,7 +136,7 @@
 
 - (void)showInView:(UIView *)view
           withData:(NSArray *)data
-  initialSelctions:(NSArray<NSString *> *)selections
+  initialSelctions:(NSArray<NSNumber *> *)selections
     itemAttributes:(NSDictionary *)attributes
             cancel:(__nullable LHCityPickerCancelBlock)cancelBlock
       confirmBlock:(__nullable LHCityPickerConfirmBlock)confirmBlock {
