@@ -1,115 +1,60 @@
-# CKBadgeView
-A simple category for you to add a badge to any UIView.
+# EYCNCityPicker
+iOS城市选择器，行政区域来源于高德web API。
 
 ![screenshot](Screenshots/example.png)
 
-Just one line of code, then you can add a badge to any UIView.
-
-```objc
-[view addBadge];
-```
-
-and remote the badge with another line:
-
-```objc
-[view removeBadge];
-```
-
-## Installation
+## 安装依赖
 
 ### Cocoapods
 
-Add the following line to your `Podfile`
+在 `Podfile` 文件中增加如下行
 
 ```ruby
-pod 'CKBadgeView'
+pod 'EYCNCityPicker'
 ```
 
-and run:
+运行:
 
 ```sh
 pod install
 ```
 
-### Manually
-
-Drag `UIView+Badge.h` and `UIView+Badge.m` to your xcode project
-
-### Usage
-
-Adding a badge to the UIView is super simple.
-
-#### 1. include the header file
+### 使用方法
 
 ```objc
-#import <CKBadgeView/UIView+Badge.h>
+    /// picker中元素的样式
+    NSDictionary *attr = @{NSForegroundColorAttributeName: [UIColor darkGrayColor],
+                           NSFontAttributeName: [UIFont systemFontOfSize:16]};
+    
+    /// 初始选择
+    NSArray *selections = @[@(_selectProvinceIdx), @(_selectCityIdx), @(_selectDistrictIdx)];
+    
+    /// 构建一个picker
+    EYCNCityPicker *picker = [EYCNCityPicker buildPicker];
+    
+    /// 显示picker
+    [picker
+     showInView:self.view
+     withData:self.data
+     initialSelctions:selections
+     itemAttributes:attr
+     cancel:^(EYCNCityPicker *picker) {
+         // 用户取消选择
+         NSLog(@"User canceled");
+         [self.selectButton setTitle:@"未选择" forState:UIControlStateNormal];
+     } confirmBlock:^(EYCNCityPicker * _Nonnull picker, NSInteger selectedProvinceIdx, NSInteger selectedCityIdx, NSInteger selectedDistrictIdx, NSString * _Nullable selectProvince, NSString * _Nullable selectCity, NSString * _Nullable selectDistrict) {
+         // 用户选择了某个行政区域
+         self.selectProvinceValue = selectProvince;
+         self.selectCityValue = selectCity == nil ? @"" : selectCity;
+         self.selectDistrictValue = selectDistrict == nil ? @"" : selectDistrict;
+         
+         self.selectProvinceIdx = selectedProvinceIdx;
+         self.selectCityIdx = selectedCityIdx;
+         self.selectDistrictIdx = selectedDistrictIdx;
+         
+         NSString *selection = [NSString stringWithFormat:@"%@, %@, %@", _selectProvinceValue, _selectCityValue, _selectDistrictValue];
+         [self.selectButton setTitle:selection forState:UIControlStateNormal];
+     }];
 ```
 
-#### 2. call `addBadge` method to add a red badge
-
-```objc
-// Add a red badge with default values
-[view addBadge];
-```
-
-The `Badge` category contains a set of `addBadge` methods for you to add badge with different requirement.
-
-Add a __red__ badge without offset
-
-```objc
-- (void)addBadge;
-```
-
-Add a __red__ badge with given offset.
-
-```objc
-- (void)addBadgeWithOffset:(CGPoint)offset;
-```
-
-Add a badge to the UIView with given badge color.
-
-```objc
-- (void)addBadgeWithColor:(UIColor *)color;
-```
-
-Add a badge to the UIView with given content and color. (Default Setting: badge radius = 5, offset = CGPointZero)
-
-```objc
-- (void)addBadgeWithContent:(NSString *)content
-                 badgeColor:(UIColor *)color;
-```
-
-
-Add a badge to the UIView with given content, color and offset. 
-(Default Setting: badge radius = 10, content font = HelveticaNeue, font size = 12.0)
-```objc
-- (void)addBadgeWithContent:(NSString *)content
-                 badgeColor:(UIColor *)color
-                     offset:(CGPoint)offset;
-```
-
-Add a badge to the UIView with customized settings.
-(Default Setting: content font = HelveticaNeue, content font size = 12.0, content color = [UIColor whiteColor])
-```objc
-- (void)addBadgeWithContent:(NSString * _Nullable)content
-                 badgeColor:(UIColor * _Nullable)color
-                     offset:(CGPoint)offset
-                badgeRadius:(CGFloat)badgeRadius;
-```
-
-
-Add a badge to the UIView with customized settings.
-
-```objc
-- (void)addBadgeWithContent:(NSString * _Nullable)content
-                contentFont:(UIFont * _Nullable)contentFont
-               contentColor:(UIColor * _Nullable)contentColor
-                 badgeColor:(UIColor * _Nullable)color
-                     offset:(CGPoint)offset
-                badgeRadius:(CGFloat)badgeRadius;
-```
-
-Remove the badge from the UIView
-```objc
-- (void)removeBadge;
-```
+更多使用例子，请查看`EYCNCityPickerExample`
