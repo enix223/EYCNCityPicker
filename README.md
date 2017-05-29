@@ -20,7 +20,20 @@ pod install
 ```
 
 ### 使用方法
+1. 获取行政区域数据
 
+```objc
+EYCNCityService *service = [[EYCNCityService alloc] initWithAPIKey:@"699161121d34385622a16ca815c6a934"];
+    [service requestCNCitiesWithCompletion:^(NSArray * _Nullable cities, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"获取行政区域失败，原因: %@", error.localizedDescription);
+        } else {
+            self.data = cities;
+        }
+    }];
+```
+
+2. 显示picker
 ```objc
     /// picker中元素的样式
     NSDictionary *attr = @{NSForegroundColorAttributeName: [UIColor darkGrayColor],
