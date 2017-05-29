@@ -1,0 +1,16 @@
+PODS:
+  - EYCNCityPicker (0.0.1)
+
+DEPENDENCIES:
+  - EYCNCityPicker (from `../EYCNCityPicker.podspec`)
+
+EXTERNAL SOURCES:
+  EYCNCityPicker:
+    :path: ../EYCNCityPicker.podspec
+
+SPEC CHECKSUMS:
+  EYCNCityPicker: d40782651b4007b5b2dff979051daeed1c5b6bb0
+
+PODFILE CHECKSUM: 134885a3723a65568172610f94767ab4eeb7cfb2
+
+COCOAPODS: 1.2.0

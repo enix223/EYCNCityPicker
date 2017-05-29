@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+
+target 'EYCNCityPickerExample' do  
+    
+    pod 'EYCNCityPicker', :path => '../EYCNCityPicker.podspec'
+
+end
