@@ -58,7 +58,7 @@
         return;
     }
     
-    NSDictionary *attr = @{NSForegroundColorAttributeName: [UIColor grayColor],
+    NSDictionary *attr = @{NSForegroundColorAttributeName: [UIColor darkGrayColor],
                            NSFontAttributeName: [UIFont systemFontOfSize:16]};
     
     NSArray *selections = @[@(_selectProvinceIdx), @(_selectCityIdx), @(_selectDistrictIdx)];
