@@ -142,9 +142,9 @@
       confirmBlock:(__nullable LHCityPickerConfirmBlock)confirmBlock {
     
     self.itemAttributes = attributes;
-    self.selectProvinceIdx = [[selections firstObject] intValue];
-    self.selectCityIdx = [[selections objectAtIndex:1] intValue];
-    self.selectDistrictIdx = [[selections objectAtIndex:2] intValue];
+    _selectProvinceIdx = [[selections firstObject] intValue];
+    _selectCityIdx = [[selections objectAtIndex:1] intValue];
+    _selectDistrictIdx = [[selections objectAtIndex:2] intValue];
     
     self.maskView = [[UIView alloc] initWithFrame:view.bounds];
     self.maskView.backgroundColor = [UIColor blackColor];
@@ -175,10 +175,6 @@
         
         [self scrollToInitialSelection];
     }];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-    });
 }
 
 - (NSString *)provinceAtRow:(NSInteger)row {
